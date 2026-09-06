@@ -7,18 +7,30 @@ export default function Home() {
   // site.ts は as const なので、省略した項目（when など）も読めるよう Event 型で受ける。
   const events: readonly Event[] = site.events;
 
+  // 生の img タグには basePath（/nomikai）が自動で付かないので、自分で足す。
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  const withBasePath = (src: string | null) => (src ? `${basePath}${src}` : null);
+  const portrait = withBasePath(site.background.portrait);
+  const landscape = withBasePath(site.background.landscape);
+
   return (
     <div className="relative flex flex-1 flex-col">
       {/* 背景。写真が未用意の間は CSS で作った夜の灯りの模様を敷く。 */}
       <div className="fixed inset-0 -z-10">
-        {site.background.src ? (
-          <Image
-            src={site.background.src}
-            alt=""
-            fill
-            priority
-            className="object-cover"
-          />
+        {portrait || landscape ? (
+          // 画面が横長なら横用、縦長なら縦用を読み込む。
+          // 表示されない方はブラウザが読み込まないので、通信量は 1 枚分で済む。
+          <picture>
+            <source
+              media="(min-aspect-ratio: 1/1)"
+              srcSet={landscape ?? portrait ?? undefined}
+            />
+            <img
+              src={portrait ?? landscape ?? undefined}
+              alt=""
+              className="h-full w-full object-cover"
+            />
+          </picture>
         ) : (
           <div className="bg-placeholder h-full w-full" />
         )}

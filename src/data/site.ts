@@ -37,9 +37,19 @@ export const site = {
     fallback: "LINK\nIN\nEBISU",
     alt: "Link in 恵比寿のロゴ",
   },
-  /** 背景写真。public/ に画像を置いて "/bg.jpg" を指定すると差し替わる。 */
+  /**
+   * 背景写真。public/ に置いた画像のパスを指定する（例: "/bg-portrait.jpg"）。
+   * 縦長の画面では portrait、横長の画面では landscape を使う。
+   * 片方だけ指定した場合はその1枚を両方で使い、どちらも null なら
+   * globals.css の .bg-placeholder（CSS で作った夜の灯り）を表示する。
+   *
+   * 推奨サイズ: portrait 1200x2000 / landscape 2400x1400、
+   * どちらも暗めで、中央の縦帯には被写体を置かない（文字が乗るため）。
+   * 静的書き出しのため画像は縮小されずそのまま配信される。1枚 400KB 以下を目安にする。
+   */
   background: {
-    src: null as string | null,
+    portrait: null as string | null,
+    landscape: null as string | null,
   },
   socials: [
     { id: "instagram", label: "Instagram", href: "https://www.instagram.com/syanyade/" },
