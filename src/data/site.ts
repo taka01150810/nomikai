@@ -25,9 +25,9 @@ export type Event = {
 
 export const site = {
   /** 会の名前 */
-  name: "Link in 恵比寿",
+  name: "飲み会お申し込み",
   /** 名前の下に出る一言。開催場所のお知らせなどに使う。 */
-  tagline: "本日は渋谷開催🍻",
+  tagline: "みんなで楽しみましょう！🍻",
   /** 丸いロゴ。画像を用意したら src を "/logo.png" のように差し替える。 */
   logo: {
     src: null as string | null,
@@ -40,8 +40,8 @@ export const site = {
     src: null as string | null,
   },
   socials: [
-    { id: "instagram", label: "Instagram", href: "https://www.instagram.com/" },
-    { id: "threads", label: "Threads", href: "https://www.threads.net/" },
+    { id: "instagram", label: "Instagram", href: "https://www.instagram.com/syanyade/" },
+    { id: "threads", label: "Threads", href: "https://www.threads.com/@syanyade?xmt=AQG0ODDAqN0wK12lhPkY1saGu0mYhnk5Rd0PZaUp8R-IACU" },
   ] satisfies Social[],
   /** 申込ボタンの並びの上に出す見出し */
   eventsHeading: "⬇️お申し込みはこちらから⬇️",
@@ -54,31 +54,31 @@ export const site = {
       when: "本日",
       date: "9/6(日)",
       title: "20代BBQ会🍖",
-      href: "https://docs.google.com/forms/",
+      href: "https://forms.gle/nH22MZixmYjiMapNA",
     },
     {
       when: "本日",
       date: "9/6(日)",
       title: "20代飲み会🍻",
-      href: "https://docs.google.com/forms/",
+      href: "https://forms.gle/nH22MZixmYjiMapNA",
     },
     {
       when: "来週",
       date: "9/11(金)",
       title: "20代飲み会🍻",
-      href: "https://docs.google.com/forms/",
+      href: "https://forms.gle/nH22MZixmYjiMapNA",
     },
     {
       when: "来週",
       date: "9/12(土)",
       title: "20代飲み会🍻",
-      href: "https://docs.google.com/forms/",
+      href: "https://forms.gle/nH22MZixmYjiMapNA",
     },
     {
       when: "来週",
       date: "9/13(日)",
       title: "20代飲み会🍻",
-      href: "https://docs.google.com/forms/",
+      href: "https://forms.gle/nH22MZixmYjiMapNA",
     },
   ] satisfies Event[],
   /** SNS に URL を貼ったときに出るカードの内容 */
