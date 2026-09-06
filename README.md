@@ -23,15 +23,43 @@ events: [
 
 編集して `main` に push すると、GitHub Actions が自動でビルドして公開する。
 
-## ローカルで動かす
+## コマンド
 
-```bash
-npm install
-npm run dev      # http://localhost:3000
+`make` だけで一覧が出る。
+
+```
+make install   依存パッケージを入れる（最初の1回）
+make dev       ローカルで開く（http://localhost:3000）
+make build     公開時と同じ形（静的書き出し）でビルドする
+make check     ビルドと lint、画像パスの検査までまとめて行う
+make deploy    変更を公開する（push して、完了まで待って、公開先を確認する）
+make status    最新のデプロイの進み具合を見る
+make verify    公開されているページが正しいか確かめる
+make open      公開ページをブラウザで開く
+make og        OGP画像（SNSで出るカード画像）を今の会名で作り直す
+make clean     ビルド結果を消す
 ```
 
-公開時と同じ形（静的書き出し）を確認したいときは、GitHub Pages のパスを付けてビルドする。
+### 公開するまで
 
 ```bash
-NEXT_PUBLIC_BASE_PATH=/nomikai npm run build   # out/ に出力される
+git add -A && git commit -m "9月の日程を更新"
+make deploy
 ```
+
+`make deploy` は、コミットしていない変更が残っていれば止まる。
+先に `make check` が走るので、ビルドが通らない・画像のパスが壊れている状態では公開されない。
+
+### 会名や説明文を変えたとき
+
+SNS に URL を貼ったときのカード画像は実ファイル（`src/app/opengraph-image.png`）で、
+文言を変えても自動では追従しない。作り直してからコミットする。
+
+```bash
+make og
+git add -A && git commit -m "OGP画像を更新"
+make deploy
+```
+
+なお LINE などは一度読んだプレビューをしばらく保存するため、直しても
+すぐには新しい表示にならない。急ぐときは `?v=2` のようにクエリを付けた URL を送る。

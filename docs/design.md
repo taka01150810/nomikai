@@ -99,12 +99,8 @@
 公開先だけ 404 になる。そのため画像は生の `<img>` を使い、`page.tsx` の
 `withBasePath()` で basePath を自分で足している。
 
-画像を足すときは、ビルド後に出力を確認するのが確実。
-
-```bash
-NEXT_PUBLIC_BASE_PATH=/nomikai npm run build
-grep -o 'src="[^"]*\.\(jpg\|png\|svg\)"' out/index.html   # すべて /nomikai/ 始まりであること
-```
+画像を足したときは `make check` で確認する。basePath が付いていない画像があれば
+その場で止まる（この検査は、実際に起きた事故を再現して弾けることを確認済み）。
 
 ## 8. 公開手順
 
@@ -112,6 +108,9 @@ grep -o 'src="[^"]*\.\(jpg\|png\|svg\)"' out/index.html   # すべて /nomikai/ 
 2. リポジトリ設定で Pages のソースを「GitHub Actions」にする
 3. `main` への push で `.github/workflows/deploy.yml` が動き、`out/` が Pages に公開される
 4. 公開 URL: `https://taka01150810.github.io/nomikai/`
+
+日々の操作は `Makefile` にまとめてある（`make` で一覧、`make deploy` で公開）。
+コマンドの説明は README を参照。
 
 **注意**: public 化するとリポジトリの内容とコミット履歴が全世界から見えるようになる。
 公開前にプレースホルダの中身に実在の個人情報が混ざっていないか確認すること。
