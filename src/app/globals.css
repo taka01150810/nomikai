@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+/* 配色はここだけを変えれば全体に反映される（夜のバーのようなダーク × 暖色）。 */
+:root {
+  --background: #14100c;
+  --foreground: #f6efe6;
+  --muted: #cbbdae;
+  --accent: #e8a44c; /* 灯りの色 */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-noto-sans-jp);
+  --font-serif: var(--font-noto-serif-jp);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/*
+ * 背景写真のプレースホルダ。
+ * 夜の店内のボケた灯りを、複数の円形グラデーションで作っている。
+ * public/bg.jpg などを用意したら src/data/site.ts の background.src を指定すれば、
+ * この模様の上に写真が乗る。
+ */
+.bg-placeholder {
+  background-color: #14100c;
+  background-image:
+    radial-gradient(7rem 7rem at 16% 18%, rgba(255, 206, 140, 0.75), transparent 68%),
+    radial-gradient(5rem 5rem at 78% 9%, rgba(255, 222, 165, 0.6), transparent 68%),
+    radial-gradient(9rem 9rem at 88% 40%, rgba(255, 190, 110, 0.55), transparent 70%),
+    radial-gradient(6rem 6rem at 26% 55%, rgba(255, 198, 125, 0.5), transparent 70%),
+    radial-gradient(8rem 8rem at 62% 72%, rgba(255, 186, 105, 0.45), transparent 72%),
+    radial-gradient(16rem 16rem at 50% 96%, rgba(232, 164, 76, 0.5), transparent 72%),
+    linear-gradient(180deg, #2a2018 0%, #191310 55%, #0f0b08 100%);
+}
