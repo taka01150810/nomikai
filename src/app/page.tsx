@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { SocialIcon } from "@/components/SocialIcon";
 import { WaveIcon } from "@/components/WaveIcon";
 import { site, type Event } from "@/data/site";
@@ -7,11 +6,13 @@ export default function Home() {
   // site.ts は as const なので、省略した項目（when など）も読めるよう Event 型で受ける。
   const events: readonly Event[] = site.events;
 
-  // 生の img タグには basePath（/nomikai）が自動で付かないので、自分で足す。
+  // 画像のパスには basePath（/nomikai）を自分で足す。
+  // next/image は unoptimized の場合 basePath を付けてくれず、公開先で 404 になる。
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
   const withBasePath = (src: string | null) => (src ? `${basePath}${src}` : null);
   const portrait = withBasePath(site.background.portrait);
   const landscape = withBasePath(site.background.landscape);
+  const logo = withBasePath(site.logo.src);
 
   return (
     <div className="relative flex flex-1 flex-col">
@@ -45,14 +46,16 @@ export default function Home() {
       <main className="mx-auto flex w-full max-w-lg flex-1 flex-col items-center px-5 pb-16 pt-10">
         {/* 丸いロゴ */}
         <div className="flex h-36 w-36 items-center justify-center overflow-hidden rounded-full bg-white">
-          {site.logo.src ? (
-            <Image
-              src={site.logo.src}
+          {logo ? (
+            // next/image は使わない。静的書き出しで images.unoptimized を有効にしており、
+            // その場合 next/image は src に basePath を付けないため公開先で 404 になる。
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={logo}
               alt={site.logo.alt}
               width={144}
               height={144}
               className="h-full w-full object-cover"
-              priority
             />
           ) : (
             <span className="whitespace-pre-line text-center text-2xl font-bold leading-tight tracking-wide text-black">

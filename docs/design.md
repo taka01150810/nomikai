@@ -92,7 +92,21 @@
   会名を変えたときは、この PNG も手で差し替える必要がある。
 - アナリティクスと共有ボタンは入れない。
 
-## 7. 公開手順
+## 7. 画像パスの注意
+
+`next/image` は `images.unoptimized: true`（静的書き出しのため必須）の場合、
+`src` に basePath（`/nomikai`）を付けない。そのまま使うとローカルでは正しく見えるのに
+公開先だけ 404 になる。そのため画像は生の `<img>` を使い、`page.tsx` の
+`withBasePath()` で basePath を自分で足している。
+
+画像を足すときは、ビルド後に出力を確認するのが確実。
+
+```bash
+NEXT_PUBLIC_BASE_PATH=/nomikai npm run build
+grep -o 'src="[^"]*\.\(jpg\|png\|svg\)"' out/index.html   # すべて /nomikai/ 始まりであること
+```
+
+## 8. 公開手順
 
 1. `nomikai` リポジトリを **private → public** に変更（無料プランの GitHub Pages は public のみ）
 2. リポジトリ設定で Pages のソースを「GitHub Actions」にする
@@ -102,7 +116,7 @@
 **注意**: public 化するとリポジトリの内容とコミット履歴が全世界から見えるようになる。
 公開前にプレースホルダの中身に実在の個人情報が混ざっていないか確認すること。
 
-## 8. 残タスク（実データが揃ってから）
+## 9. 残タスク（実データが揃ってから）
 
 `src/data/site.ts` を編集して push すれば、Actions が自動でデプロイする。
 
