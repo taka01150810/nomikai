@@ -68,12 +68,12 @@ export const site = {
     //   title: "飲み会🍻",
     //   href: "https://forms.gle/nH22MZixmYjiMapNA",
     // },
-    {
-      date: "9/5(土)",
-      venue: "新宿バー",
-      title: "飲み会🍻",
-      href: "https://forms.gle/nH22MZixmYjiMapNA",
-    },
+    // {
+    //   date: "9/5(土)",
+    //   venue: "新宿バー",
+    //   title: "飲み会🍻",
+    //   href: "https://forms.gle/nH22MZixmYjiMapNA",
+    // },
     {
       date: "9/9(水)",
       venue: "豊洲",
