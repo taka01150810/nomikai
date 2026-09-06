@@ -34,8 +34,12 @@ export default function Home() {
         ) : (
           <div className="bg-placeholder h-full w-full" />
         )}
-        {/* 文字を読みやすくするための暗幕 */}
-        <div className="absolute inset-0 bg-black/30" />
+        {/*
+          文字を読みやすくするための暗幕。
+          写真の上部は空やビルの明かりで明るいことが多く、そこに会名が乗るので、
+          上ほど濃くする。
+        */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/45 to-black/55" />
       </div>
 
       <main className="mx-auto flex w-full max-w-lg flex-1 flex-col items-center px-5 pb-16 pt-10">
@@ -60,7 +64,7 @@ export default function Home() {
         <h1 className="mt-5 text-center font-serif text-3xl font-bold drop-shadow">
           {site.name}
         </h1>
-        <p className="mt-2 text-center font-serif text-base font-semibold text-muted drop-shadow">
+        <p className="mt-2 text-center font-serif text-base font-semibold text-foreground/85 drop-shadow">
           {site.tagline}
         </p>
 

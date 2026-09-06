@@ -48,8 +48,8 @@ export const site = {
    * 静的書き出しのため画像は縮小されずそのまま配信される。1枚 400KB 以下を目安にする。
    */
   background: {
-    portrait: null as string | null,
-    landscape: null as string | null,
+    portrait: "/bg-portrait.jpg" as string | null,
+    landscape: "/bg-landscape.jpg" as string | null,
   },
   socials: [
     { id: "instagram", label: "Instagram", href: "https://www.instagram.com/syanyade/" },
