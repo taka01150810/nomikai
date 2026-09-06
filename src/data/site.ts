@@ -32,7 +32,7 @@ export const site = {
   tagline: "みんなで楽しみましょう！🍻",
   /** 丸いロゴ。画像を用意したら src を "/logo.png" のように差し替える。 */
   logo: {
-    src: null as string | null,
+    src: "/logo.jpg" as string | null,
     /** logo.src が null の間、白い丸の中に出す文字（改行で3行にする） */
     fallback: "LINK\nIN\nEBISU",
     alt: "Link in 恵比寿のロゴ",
@@ -62,12 +62,12 @@ export const site = {
    * 終わった回は配列から消し、新しい回を下に足していく運用。
    */
   events: [
-    {
-      date: "9/2(水)",
-      venue: "新宿",
-      title: "飲み会🍻",
-      href: "https://forms.gle/nH22MZixmYjiMapNA",
-    },
+    // {
+    //   date: "9/2(水)",
+    //   venue: "新宿",
+    //   title: "飲み会🍻",
+    //   href: "https://forms.gle/nH22MZixmYjiMapNA",
+    // },
     {
       date: "9/5(土)",
       venue: "新宿バー",
