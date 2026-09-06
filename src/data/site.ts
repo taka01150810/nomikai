@@ -34,8 +34,8 @@ export const site = {
   logo: {
     src: "/logo.jpg" as string | null,
     /** logo.src が null の間、白い丸の中に出す文字（改行で3行にする） */
-    fallback: "LINK\nIN\nEBISU",
-    alt: "Link in 恵比寿のロゴ",
+    fallback: "",
+    alt: "ロゴ",
   },
   /**
    * 背景写真。public/ に置いた画像のパスを指定する（例: "/bg-portrait.jpg"）。
@@ -125,9 +125,9 @@ export const site = {
   ] satisfies Event[],
   /** SNS に URL を貼ったときに出るカードの内容 */
   meta: {
-    title: "Link in 恵比寿",
+    title: "Shinwa飲み会",
     description:
-      "恵比寿・渋谷で開催している20代の飲み会。開催日ごとの申し込みはこちらから。",
+      "開催日ごとの申し込みはこちらから。",
     /**
      * サイトのオリジン（ドメインまで）。OGP 画像の絶対 URL の組み立てに使う。
      * basePath（/nomikai）は Next が自動で足すので、ここには含めない。
