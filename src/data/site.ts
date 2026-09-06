@@ -13,10 +13,12 @@ export type Social = {
 
 /** 1回の開催 = 1つの申込ボタン。 */
 export type Event = {
-  /** ボタン先頭に出す時期の言葉。例: "本日" "明日" "来週" */
-  when: string;
+  /** ボタン先頭に出す時期の言葉。例: "本日" "明日" "来週"。不要なら省略する。 */
+  when?: string;
   /** 開催日。例: "9/6(日)" */
   date: string;
+  /** 開催地。日付の隣に出す。不要なら省略する。 */
+  venue?: string;
   /** 【】の中に入る会の名前。絵文字を入れてよい。 */
   title: string;
   /** クリック先の Google フォーム URL */
@@ -51,33 +53,63 @@ export const site = {
    */
   events: [
     {
-      when: "本日",
-      date: "9/6(日)",
-      title: "20代BBQ会🍖",
+      date: "9/2(水)",
+      venue: "新宿",
+      title: "飲み会🍻",
       href: "https://forms.gle/nH22MZixmYjiMapNA",
     },
     {
-      when: "本日",
-      date: "9/6(日)",
-      title: "20代飲み会🍻",
+      date: "9/5(土)",
+      venue: "新宿バー",
+      title: "飲み会🍻",
       href: "https://forms.gle/nH22MZixmYjiMapNA",
     },
     {
-      when: "来週",
-      date: "9/11(金)",
-      title: "20代飲み会🍻",
+      date: "9/9(水)",
+      venue: "豊洲",
+      title: "飲み会🍻",
       href: "https://forms.gle/nH22MZixmYjiMapNA",
     },
     {
-      when: "来週",
       date: "9/12(土)",
-      title: "20代飲み会🍻",
+      venue: "池袋",
+      title: "飲み会🍻",
       href: "https://forms.gle/nH22MZixmYjiMapNA",
     },
     {
-      when: "来週",
       date: "9/13(日)",
-      title: "20代飲み会🍻",
+      venue: "豊洲",
+      title: "飲み会🍻",
+      href: "https://forms.gle/nH22MZixmYjiMapNA",
+    },
+    {
+      date: "9/16(火)",
+      venue: "新宿バー",
+      title: "飲み会🍻",
+      href: "https://forms.gle/nH22MZixmYjiMapNA",
+    },
+    {
+      date: "9/19(土)",
+      venue: "池袋",
+      title: "飲み会🍻",
+      href: "https://forms.gle/nH22MZixmYjiMapNA",
+    },
+    {
+      date: "9/20(日)",
+      venue: "新宿バー",
+      title: "飲み会🍻",
+      href: "https://forms.gle/nH22MZixmYjiMapNA",
+    },
+    {
+      date: "9/23(水)",
+      venue: "新宿バー",
+      title: "飲み会🍻",
+      href: "https://forms.gle/nH22MZixmYjiMapNA",
+    },
+    {
+      date: "9/26(土)",
+      venue: "豊洲",
+      title: "飲み会🍻",
       href: "https://forms.gle/nH22MZixmYjiMapNA",
     },
   ] satisfies Event[],

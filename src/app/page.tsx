@@ -1,9 +1,12 @@
 import Image from "next/image";
 import { SocialIcon } from "@/components/SocialIcon";
 import { WaveIcon } from "@/components/WaveIcon";
-import { site } from "@/data/site";
+import { site, type Event } from "@/data/site";
 
 export default function Home() {
+  // site.ts は as const なので、省略した項目（when など）も読めるよう Event 型で受ける。
+  const events: readonly Event[] = site.events;
+
   return (
     <div className="relative flex flex-1 flex-col">
       {/* 背景。写真が未用意の間は CSS で作った夜の灯りの模様を敷く。 */}
@@ -70,7 +73,7 @@ export default function Home() {
 
         {/* 開催日ごとの申込ボタン。押すと Google フォームが開く。 */}
         <nav aria-label="開催予定" className="mt-4 flex w-full flex-col gap-4">
-          {site.events.map((event, index) => (
+          {events.map((event, index) => (
             <a
               key={`${event.date}-${event.title}-${index}`}
               href={event.href}
@@ -85,7 +88,8 @@ export default function Home() {
                 </span>
                 <span className="flex-1 text-center font-serif text-[15px] font-bold leading-snug drop-shadow">
                   {event.when}
-                  {event.date}【{event.title}】お申し込みはこちら
+                  {event.date}
+                  {event.venue && ` ${event.venue}`}【{event.title}】お申し込みはこちら
                 </span>
               </span>
             </a>
