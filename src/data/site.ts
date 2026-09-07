@@ -3,7 +3,7 @@
  * 現在の値は全てプレースホルダ（仮）なので、実データが決まったら置き換える。
  */
 
-export type SocialId = "instagram" | "threads";
+export type SocialId = "instagram" | "threads" | "line";
 
 export type Social = {
   id: SocialId;
@@ -54,6 +54,7 @@ export const site = {
   socials: [
     { id: "instagram", label: "Instagram", href: "https://www.instagram.com/syanyade/" },
     { id: "threads", label: "Threads", href: "https://www.threads.com/@syanyade?xmt=AQG0ODDAqN0wK12lhPkY1saGu0mYhnk5Rd0PZaUp8R-IACU" },
+    { id: "line", label: "LINE", href: "https://line.me/ti/p/rMgygYRcFe" },
   ] satisfies Social[],
   /** 申込ボタンの並びの上に出す見出し */
   eventsHeading: "⬇️お申し込みはこちらから⬇️",
